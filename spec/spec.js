@@ -55,11 +55,12 @@ describe("WordSearch()", function() {
 	it("handle crosswords", function() {
 		w = new WordSearch([
 			"acacateandcarro",
-			"cafeandsometea",
-			"atandtasdasdsa",
-			"atandtasdasdsa"])
+			"cafeandsometeaa",
+			"atandtasdasdsas",
+			"atdndtasdasdsad"])
 		w.add2dictionary("aaa")
+		w.add2dictionary("and")
 		expect(w.mark([0,0],[2,2])).toBe(true)
-
+		expect(w.mark([1,4],[3,2])).toBe(true)
 	});
 });

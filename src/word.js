@@ -8,21 +8,19 @@ WordSearch = function(matrix){
 	};
 
 	this.mark = function(start, end){
-		var key = null
+		var key = ""
 		if (start[0] == end[0])
 			key = this.inner_matrix[start[0]].substring(start[1],end[1]+1);
 		else if (start[1] == end[1]){
-			key = ""
 			for (var row = start[0]; row <= end[0]; row ++){
 				key += this.inner_matrix[row][start[1]]
 			}
 		}else {
-			key = ""
 			var col = start[1];
-
 			for (var row = start[0]; row <= end[0]; row ++){
 				key += this.inner_matrix[row][col];
-				col ++;
+				if (start[1] < end[1])	col ++;
+				else					col --;
 			}
 		}
 			
