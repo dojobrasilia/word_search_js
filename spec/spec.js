@@ -64,6 +64,12 @@ describe("WordSearch()", function() {
 		expect(w.mark([1,4],[3,2])).toBe(true)
 	});
 
+	it("handle backwards words", function() {
+		w = new WordSearch(["orrac"])
+		w.add2dictionary("carro")
+		expect(w.mark([0,0],[0,4])).toBe(true)
+	});
+
 	it("validate if coordinates are ok", function() {
 		w = new WordSearch([
 			"acacateandcarro",

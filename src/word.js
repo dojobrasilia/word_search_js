@@ -8,6 +8,10 @@ WordSearch = function(matrix){
 	};
 
 	this.mark = function(start, end){
+		return this.isInDict(this.extractWordFrom(start,end));
+	};
+
+	this.extractWordFrom = function(start, end){
 		var key = ""
 		if (start[0] == end[0])
 			key = this.inner_matrix[start[0]].substring(start[1],end[1]+1);
@@ -17,7 +21,7 @@ WordSearch = function(matrix){
 			}
 		}else {
 			if (Math.abs(start[0]-end[0]) != Math.abs(start[1]-end[1])) {
-				return false
+				return ""
 			}
 			var col = start[1];
 			for (var row = start[0]; row <= end[0]; row ++){
@@ -26,13 +30,13 @@ WordSearch = function(matrix){
 				else					col --;
 			}
 		}
-			
-		return this.isInDict(key);
-	};
+		return key
+	}
 
 	this.isInDict = function(word){
 		for (var i = 0; i < this.dictionary.length; i++){
-			if ( word == this.dictionary[i])
+			if ( word == this.dictionary[i] || 
+				word.split("").reverse().join("") == this.dictionary[i])
 				return true;
 		}
 		return false;
