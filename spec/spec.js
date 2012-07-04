@@ -1,4 +1,4 @@
-describe("word", function() {
+describe("WordSearch()", function() {
 	
 
 	beforeEach(function() {
@@ -19,7 +19,7 @@ describe("word", function() {
 	});
 
 
-	it("rejcts when selection is not a word", function() {
+	it("rejects when selection is not a word", function() {
 		w = new WordSearch(["abacateandcarro"])
 		w.add2dictionary("abacate")
 		w.add2dictionary("carro")
@@ -29,7 +29,7 @@ describe("word", function() {
 	});
 
 
-	it("another line in the matrix", function() {
+	it("handle words on other lines in the matrix", function() {
 		w = new WordSearch(["abacateandcarro","cafeandsometea"])
 		w.add2dictionary("cafe")
 		w.add2dictionary("tea")
@@ -38,6 +38,28 @@ describe("word", function() {
 		expect(w.mark([1,11],[1,13])).toBe(true)
 	});
 
-
+	it("handle words on columns", function() {
+		w = new WordSearch([
+			"acacateandcarro",
+			"cafeandsometea",
+			"atandtasdasdsa",
+			"atandtasdasdsa"])
+		w.add2dictionary("cafe")
+		w.add2dictionary("tea")
+		w.add2dictionary("cat")
+		w.add2dictionary("fa")
+		expect(w.mark([0,1],[2,1])).toBe(true)
+		expect(w.mark([1,2],[2,2])).toBe(true)
+	});
 	
+	it("handle crosswords", function() {
+		w = new WordSearch([
+			"acacateandcarro",
+			"cafeandsometea",
+			"atandtasdasdsa",
+			"atandtasdasdsa"])
+		w.add2dictionary("aaa")
+		expect(w.mark([0,0],[2,2])).toBe(true)
+
+	});
 });
