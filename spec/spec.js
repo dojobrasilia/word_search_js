@@ -63,4 +63,16 @@ describe("WordSearch()", function() {
 		expect(w.mark([0,0],[2,2])).toBe(true)
 		expect(w.mark([1,4],[3,2])).toBe(true)
 	});
+
+	it("validate if coordinates are ok", function() {
+		w = new WordSearch([
+			"acacateandcarro",
+			"cafeandsometeaa",
+			"atandtasdasdsas",
+			"atdndtasdasdsad"])
+		w.add2dictionary("aaa")
+		w.add2dictionary("and")
+		expect(w.mark([0,0],[2,1])).toBe(false)
+		
+	});
 });

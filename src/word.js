@@ -16,6 +16,9 @@ WordSearch = function(matrix){
 				key += this.inner_matrix[row][start[1]]
 			}
 		}else {
+			if (Math.abs(start[0]-end[0]) != Math.abs(start[1]-end[1])) {
+				return false
+			}
 			var col = start[1];
 			for (var row = start[0]; row <= end[0]; row ++){
 				key += this.inner_matrix[row][col];
