@@ -10,18 +10,22 @@ describe("word", function() {
 	});
 	
 	it("finds a word if its all we have", function() {
-		w = new WordSearch("abacate")
+		w = new WordSearch("abacateandcarro")
 		w.add2dictionary("abacate")
+		w.add2dictionary("carro")
 
 		expect(w.mark([0,0],[0,6])).toBe(true)
+		expect(w.mark([0,10],[0,14])).toBe(true)
 	});
 
 
-	it("", function() {
-		w = new WordSearch("abacatecasasssscarro")
+	it("rejcts when selection is not a word", function() {
+		w = new WordSearch("abacateandcarro")
 		w.add2dictionary("abacate")
+		w.add2dictionary("carro")
 
 		expect(w.mark([0,0],[0,5])).toBe(false)
+		expect(w.mark([0,11],[0,14])).toBe(false)
 	});
 	
 });

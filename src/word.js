@@ -1,13 +1,17 @@
 WordSearch = function(matrix){
 	
 	this.inner_matrix =matrix;
-	this.dictionary = "";
+	this.dictionary = [];
 
 	this.add2dictionary = function(word){
-		this.dictionary = word;
+		this.dictionary.push(word);
 	};
 
 	this.mark = function(start, end){
-		return this.inner_matrix.substring(start[1],end[1]+1) == this.dictionary  ;
+		for (var i = 0; i < this.dictionary.length; i++){
+			if (this.inner_matrix.substring(start[1],end[1]+1) == this.dictionary[i])
+				return true;
+		}
+		return false;
 	};
 }
